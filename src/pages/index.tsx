@@ -1,8 +1,9 @@
 import CounterServer from '@/components/counter-server';
+import type { RequestContext } from 'brisa';
 
-export default function Homepage() {
+export default function Homepage(_: Record<string, undefined>, { finalURL }: RequestContext) {
   async function sendRequest() {
-    const response = await fetch('/api', {
+    const response = await fetch(`${new URL(finalURL).origin}/api`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
