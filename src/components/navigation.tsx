@@ -1,4 +1,11 @@
+import { navigate } from "brisa";
+
 export default function Nav() {
+
+  function onNavigate(page: string) {
+    navigate(page)
+  }
+
   return (
     <nav>
       <div class="nav-content">
@@ -13,10 +20,16 @@ export default function Nav() {
         </a>
         <ul>
           <li>
-            <a href="/">Home</a>
+            <a href="/">Home link</a>
+            <button type="button" onClick={() => onNavigate('/')}>Home navigate</button>
           </li>
           <li>
-            <a href="/about">About Brisa</a>
+            <a href="/empty">Empty link</a>
+            <button type="button" onClick={() => onNavigate('/empty')}>Empty navigate</button>
+          </li>
+          <li>
+            <a href="/about">About link</a>
+            <button type="button" onClick={() => onNavigate('/about')}>About navigate</button>
           </li>
         </ul>
       </div>

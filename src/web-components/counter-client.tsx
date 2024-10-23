@@ -2,9 +2,17 @@ import type { WebContext } from 'brisa';
 
 export default function Counter(
   { initialValue = 0 }: { initialValue: number },
-  { state }: WebContext,
+  { state, effect, onMount }: WebContext,
 ) {
   const count = state(initialValue);
+
+  onMount(() => {
+    console.log('Im an onMount');
+  });
+
+  effect(() => {
+    console.log('Im an effect', count.value);
+  });
 
   return (
     <div class="counter">
